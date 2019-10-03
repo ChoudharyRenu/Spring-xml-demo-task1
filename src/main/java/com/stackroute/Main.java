@@ -1,6 +1,7 @@
 package com.stackroute;
 
 import com.stackroute.domain.Actor;
+import com.stackroute.domain.BeanLifeCycleDemoBean;
 import com.stackroute.domain.Movie;
 import org.springframework.beans.factory.support.BeanDefinitionReader;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
@@ -22,7 +23,20 @@ public class Main
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("beans.xml");
         Actor actor = applicationContext.getBean("akshay",Actor.class);
         Movie movie = applicationContext.getBean("movie",Movie.class);
+        BeanLifeCycleDemoBean beanLifeCycleDemoBean = applicationContext.getBean("beanLifeCycle",BeanLifeCycleDemoBean.class);
         movie.displayActorDetails();
+        try {
+            beanLifeCycleDemoBean.afterPropertiesSet();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            beanLifeCycleDemoBean.destroy();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        beanLifeCycleDemoBean.customDestroy();
+        beanLifeCycleDemoBean.customInit();
 
     }
 }
