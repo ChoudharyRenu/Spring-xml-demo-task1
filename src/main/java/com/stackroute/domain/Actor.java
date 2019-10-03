@@ -1,16 +1,13 @@
 package com.stackroute.domain;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Actor {
-    private String name,gender;
-    private int age;
+    String name,gender;
+    int age;
 
     public Actor() {
-    }
-
-    public Actor(String name, String gender, int age) {
-        this.name = name;
-        this.gender = gender;
-        this.age = age;
     }
 
     public String getName() {
@@ -36,4 +33,13 @@ public class Actor {
     public void setAge(int age) {
         this.age = age;
     }
+
+    public Actor(String name, String gender, int age) {
+        this.name = name;
+        this.gender = gender;
+        this.age = age;
+    }
+
+
+
 }
