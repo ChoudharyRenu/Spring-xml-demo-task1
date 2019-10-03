@@ -21,24 +21,25 @@ public class Main
         System.out.println("----------------Using ApplicationContext-------------------");
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("beans.xml");
         Actor actor = applicationContext.getBean("actor",Actor.class);
-        Movie movie = applicationContext.getBean("movie",Movie.class);
+        Movie movie = applicationContext.getBean("movieA",Movie.class);
         movie.displayActorDetails();
         System.out.println("-------------------Using BeanFactory------------------------");
         XmlBeanFactory factory = new XmlBeanFactory(new ClassPathResource("beans.xml"));
         //XmlBeanFactory factory = new XmlBeanFactory(new FileSystemResource("/home/cgi/Task1/src/main/resources/beans.xml"));
         //Actor actor = (Actor)factory.getBean("SRK");
-        Movie movie1 = (Movie)factory.getBean("movie");
+        Movie movie1 = (Movie)factory.getBean("movieB");
         movie.displayActorDetails();
         System.out.println("--------------Using beansDefinitionRegistry----------------");
         BeanDefinitionRegistry beanDefinitionRegistry = new DefaultListableBeanFactory();
         BeanDefinitionReader  beanDefinitionReader = new XmlBeanDefinitionReader(beanDefinitionRegistry);
         beanDefinitionReader.loadBeanDefinitions(new ClassPathResource("beans.xml"));
-        Movie movie2 = (Movie)((DefaultListableBeanFactory) beanDefinitionRegistry).getBean("movie");
+        Movie movie2 = (Movie)((DefaultListableBeanFactory) beanDefinitionRegistry).getBean("movieA");
         movie2.displayActorDetails();
 
         // task2 starts here
         System.out.println("-------------Task2 starts here-----------------");
         Movie  movie3 = applicationContext.getBean("3idiots",Movie.class);
         movie3.displayActorDetails();
+        System.out.println(movie1==movie2);
     }
 }

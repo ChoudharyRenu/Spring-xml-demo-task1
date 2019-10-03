@@ -10,7 +10,7 @@
         <property name="gender" value="male"/>
         <property name="age" value="40"/>
     </bean>
-    <bean id="movie" class="com.stackroute.domain.Movie">
+    <bean name="movieA,movieB" scope="prototype" class="com.stackroute.domain.Movie">
         <property name="actor" ref="actor"/>
     </bean>
     <bean id="aamir" class="com.stackroute.domain.Actor">
