@@ -6,8 +6,8 @@
    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"
 >
     <bean id="beanLifeCycle" class="com.stackroute.domain.BeanLifeCycleDemoBean" init-method="customInit" destroy-method="customDestroy">
-
-
+    </bean>
+    <bean id="postProcessorDemo" class="com.stackroute.domain.BeanPostProcessorDemoBean">
     </bean>
     <bean id = "actor" class = "com.stackroute.domain.Actor">
         <property name="name" value="SRK"/>
